@@ -75,7 +75,7 @@ const printPlaylist = function(playlistId) {
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
-       library.playlists[playlistId].tracks.push(trackId);
+  library.playlists[playlistId].tracks.push(trackId);
 
 };
 
@@ -89,6 +89,14 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
+  const trackID = generateUid();
+  
+  library.tracks[trackID] = {
+    id: trackID,
+    name: name,
+    artist: artist,
+    album: album
+  };
 
 };
 
@@ -123,3 +131,10 @@ console.log();
 addTrackToPlaylist("t04", "p02");
 console.log("Playlist 2 AFTER adding NEW TRACK: ");
 printPlaylist("p02");
+
+console.log("---------------------");
+console.log("Tracks BEFORE: ");
+printTracks();
+addTrack("Rock With You", "Michael Jackson", "Off The Wall");
+console.log("\nTracks AFTER: ");
+printTracks();
