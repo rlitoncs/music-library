@@ -103,6 +103,13 @@ const addTrack = function(name, artist, album) {
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
+  const playListID = generateUid();
+
+  library.playlists[playListID] = {
+    id: playListID,
+    name: name,
+    tracks: []
+  };
 
 };
 
@@ -138,3 +145,10 @@ printTracks();
 addTrack("Rock With You", "Michael Jackson", "Off The Wall");
 console.log("\nTracks AFTER: ");
 printTracks();
+
+console.log("---------------------");
+console.log("Playlists BEFORE: ");
+printPlaylists();
+addPlaylist("Michael Jackson Playlist");
+console.log("\nPlaylists BEFORE: ");
+printPlaylists();
