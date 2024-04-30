@@ -120,6 +120,17 @@ const addPlaylist = function(name) {
 // tip: use "string".search("tri")
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 const printSearchResults = function(query) {
+  const tracksKeys = Object.keys(library.tracks);
+     
+  for (let key of tracksKeys) {
+    for (let innerKey in library.tracks[key]) {
+      if (library.tracks[key][innerKey].search(new RegExp(query, "i")) !== -1) {
+        console.log(`${key}: ${library.tracks[key].name} by ${library.tracks[key].artist} (${library.tracks[key].album})`);
+        break;
+      }
+    }
+     
+  }
 
 };
 
@@ -152,3 +163,14 @@ printPlaylists();
 addPlaylist("Michael Jackson Playlist");
 console.log("\nPlaylists BEFORE: ");
 printPlaylists();
+
+console.log("---------------------");
+let query1 = "thRee";
+let query2 = "jackson";
+let query3 = " ";
+console.log(`Search Query: ${query1}`);
+printSearchResults(query1);
+console.log(`\nSearch Query: ${query2}`);
+printSearchResults(query2);
+console.log(`\nSearch Query: ${query3}`);
+printSearchResults(query3);
