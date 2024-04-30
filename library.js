@@ -75,6 +75,7 @@ const printPlaylist = function(playlistId) {
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
+       library.playlists[playlistId].tracks.push(trackId);
 
 };
 
@@ -111,3 +112,14 @@ const printSearchResults = function(query) {
 printPlaylists();
 printTracks();
 printPlaylist("p01");
+
+console.log("---------------------");
+
+console.log("Playlist 2 BEFORE adding NEW TRACK: ");
+printPlaylist("p02");
+console.log();
+
+
+addTrackToPlaylist("t04", "p02");
+console.log("Playlist 2 AFTER adding NEW TRACK: ");
+printPlaylist("p02");
